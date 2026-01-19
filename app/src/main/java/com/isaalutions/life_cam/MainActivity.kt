@@ -12,14 +12,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.firebase.database.FirebaseDatabase
 import com.isaalutions.life_cam.ui.theme.LifecamTheme
+import com.isaalutions.life_cam.viewmodel.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel: MainViewModel = viewModel()
             LaunchedEffect(Unit) {
                 FirebaseDatabase.getInstance().reference.child("Test").setValue("Hello, World!")
             }

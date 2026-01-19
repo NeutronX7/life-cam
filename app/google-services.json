@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "325356930492",
+    "firebase_url": "https://life-chat-android-default-rtdb.firebaseio.com",
+    "project_id": "life-chat-android",
+    "storage_bucket": "life-chat-android.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:325356930492:android:e8db837e0f75bb50ddd7b9",
+        "android_client_info": {
+          "package_name": "com.isaalutions.life_cam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3tJp57qlC708_QMgi6ixTm-PrXndjt-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,12 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.isaalutions.life_cam.viewmodel.MainViewModel
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val viewModel: MainViewModel = viewModel()
+
     val requestPermissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { permission ->
@@ -22,7 +26,7 @@ fun MainScreen(
                 Toast.LENGTH_LONG
             ).show()
         } else {
-            // Permissions granted, proceed with app functionality
+            viewModel.permissionsGranted()
         }
     }
 

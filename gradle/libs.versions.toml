@@ -8,6 +8,16 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.10.0"
 activityCompose = "1.12.2"
 composeBom = "2024.09.00"
+google_services = "4.4.4"
+firebase_bom = "34.8.0"
+firebase_analytics = "22.5.0"
+firebase_database_ktx = "21.0.0"
+hilt = "2.58"
+gson = "2.13.2"
+webrtc = "1.0.5"
+lifecycleViewModelCompose = "2.10.0"
+hiltNavigationCompose = "1.2.0"
+composeIcons = "1.4.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,9 +34,23 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "google_services" }
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebase_bom" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx", version.ref = "firebase_analytics" }
+firebase-database-ktx = { group = "com.google.firebase", name = "firebase-database-ktx", version.ref = "firebase_database_ktx" }
+hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+webrtc = { group = "org.webrtc", name = "google-webrtc", version.ref = "webrtc" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewModelCompose" }
+hilt-navigation-compose = { group = "com.google.dagger", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+compose-icons-core = { group = "org.jetbrains.compose.icons", name = "compose-icons-core", version.ref = "composeIcons" }
+compose-icons-extended = { group = "org.jetbrains.compose.icons", name = "compose-icons-extended", version.ref = "composeIcons" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "google_services" }
+hiltAndroid = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 

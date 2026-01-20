@@ -9,6 +9,7 @@ import com.isaalutions.life_cam.utils.FirebaseFieldNames
 import com.isaalutions.life_cam.utils.MatchState
 import com.isaalutions.life_cam.utils.MyValueEventListener
 import com.isaalutions.life_cam.utils.SharedPrefHelper
+import com.isaalutions.life_cam.utils.SignalDataModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -97,6 +98,29 @@ class FirebaseClient @Inject constructor(
                     callback(null)
                 }
             })
+    }
+
+    fun observeIncomingSignals(callBack:(SignalDataModel)-> Unit) {
+        database.child(FirebaseFieldNames.USERS).child(prefHelper.getUserId()!!)
+            .child(FirebaseFieldNames.DATA).addValueEventListener(object : MyValueEventListener() {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    super.onDataChange(snapshot)
+                    runCatching {
+                        gson.fromJson(snapshot.value.toString(), SignalDataModel::class.java)
+                    }
+                    .onSuccess {
+                        if(it!=null) callBack(it)
+                    }
+                    .onFailure {
+                        Log.d("FirebaseClient", "Error parsing signal data: ${it.localizedMessage}")
+                    }
+                }
+            })
+    }
+
+    suspend fun updateParticipantDataModel(participant:String, data: SignalDataModel) {
+        database.child(FirebaseFieldNames.USERS).child(FirebaseFieldNames.DATA)
+            .setValue(gson.toJson(data)).await()
     }
 
     suspend fun updateSelfStatus(status: StatusDataModel) {

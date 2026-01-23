@@ -114,20 +114,16 @@ class WebRTCFactory @Inject constructor(
 
     fun onDestroy() {
         runCatching {
-            // Stop capturing video
             videoCapture?.stopCapture()
             videoCapture?.dispose()
 
-            // Mute and dispose of the audio track
             localAudioTrack?.let {
-                it.setEnabled(false) // Disable the track to stop mic input
+                it.setEnabled(false)
                 it.dispose()
             }
 
-            // Dispose of the video track
             localVideoTrack?.dispose()
 
-            // Dispose of the local media stream
             localStream?.dispose()
         }.onFailure {
             it.printStackTrace()

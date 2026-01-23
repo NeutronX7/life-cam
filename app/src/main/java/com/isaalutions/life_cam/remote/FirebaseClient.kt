@@ -129,6 +129,11 @@ class FirebaseClient @Inject constructor(
             .await()
     }
 
+    suspend fun updateParticipantStatus(participantId: String, status: StatusDataModel) {
+        database.child(FirebaseFieldNames.USERS).child(participantId)
+            .child(FirebaseFieldNames.STATUS).setValue(status).await()
+    }
+
     suspend fun removeSelfData() {
         database.child(FirebaseFieldNames.USERS).child(prefHelper.getUserId()!!)
             .child(FirebaseFieldNames.DATA).removeValue().await()

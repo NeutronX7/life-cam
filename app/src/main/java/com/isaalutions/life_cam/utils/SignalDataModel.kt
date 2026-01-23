@@ -1,11 +1,11 @@
 package com.isaalutions.life_cam.utils
 
 data class SignalDataModel(
-    val type: SingalDataModelTypes?=null,
+    val type: SignalDataModelTypes?=null,
     val data:String?=null
 )
 
-enum class SingalDataModelTypes {
+enum class SignalDataModelTypes {
     OFFER,
     ANSWER,
     ICE,

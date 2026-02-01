@@ -26,7 +26,6 @@ import org.webrtc.PeerConnection
 import org.webrtc.SessionDescription
 import org.webrtc.SurfaceViewRenderer
 import javax.inject.Inject
-import kotlin.reflect.typeOf
 
 @SuppressLint("StaticFieldLeak")
 @HiltViewModel

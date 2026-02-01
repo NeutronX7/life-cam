@@ -69,7 +69,7 @@ fun MainScreen(
     ) { permission ->
         if(!permission.all { it.value }) {
             Toast.makeText(
-                context, "Permissions are required for the app to function properly.",
+                context, "Permissions are required for the app to function properly",
                 Toast.LENGTH_LONG
             ).show()
         } else {
@@ -89,7 +89,7 @@ fun MainScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFEAEAEA)) // Background color
+            .background(Color(0xFFEAEAEA))
 
     ) {
         Box(
@@ -115,7 +115,7 @@ fun MainScreen(
                 .weight(2f)
                 .padding(8.dp)
         ) {
-            ChatSection(chatItems = chatState.value) // Displaying the chat list
+            ChatSection(chatItems = chatState.value)
         }
 
         Row(
@@ -126,22 +126,20 @@ fun MainScreen(
             if (matchState.value != MatchState.NewState) {
                 Box(
                     modifier = Modifier
-                        .weight(1f) // This will make the Box take up 1f of the available space
-                        .padding(3.dp) // Padding around the Box (this ensures there’s space for the switch camera button)
+                        .weight(1f)
+                        .padding(3.dp)
                 ) {
-                    // Surface that fills the entire Box
-                    SurfaceViewRendererComposable(modifier = Modifier.fillMaxSize(), // This makes the SurfaceViewRenderer fill the available space within the Box
+                    SurfaceViewRendererComposable(modifier = Modifier.fillMaxSize(),
                         onSurfaceReady = { renderer ->
-                            viewModel.startLocalStream(renderer) // Start the local stream when SurfaceViewRenderer is ready
+                            viewModel.startLocalStream(renderer)
                         })
 
-                    // Switch Camera Button at the bottom left
                     IconButton(
                         onClick = {
                             viewModel.switchCamera()
                         },
                         modifier = Modifier
-                            .align(Alignment.BottomEnd) // Align it to the bottom-right of the Box
+                            .align(Alignment.BottomEnd)
                             .padding(3.dp)
                             .size(30.dp)
 
@@ -178,7 +176,6 @@ fun MainScreen(
                         .fillMaxWidth()
                         .padding(8.dp)
                 ) {
-                    // OutlinedTextField for chat input
                     OutlinedTextField(value = chatText.value,
                         onValueChange = { chatText.value = it },
                         label = { Text("Type your message") },
@@ -191,13 +188,11 @@ fun MainScreen(
                         )
                     )
 
-                    // Send button to add the chat item
                     IconButton(onClick = {
-                        // Add the new chat item to the chat list in the ViewModel
                         if (chatText.value.isNotEmpty()) {
                             val newChatItem = ChatItem(text = chatText.value, isMine = true)
                             viewModel.sendChatItem(newChatItem)
-                            chatText.value = "" // Clear the input field after sending
+                            chatText.value = ""
                         }
                     }) {
                         Icon(
@@ -218,7 +213,7 @@ fun MainScreen(
                             viewModel.stopLookingForMatch()
                         }, Modifier.weight(5f), colors = IconButtonDefaults.iconButtonColors(
                             containerColor = Color(
-                                0xFFC294A4
+                                0xFFFF0000
                             )
                         )
                     ) {
@@ -237,7 +232,7 @@ fun MainScreen(
                         onClick = {
                             viewModel.findNextMatch()
                         }, Modifier.weight(5f), colors = IconButtonDefaults.iconButtonColors(
-                            containerColor = Color(0xFFA4BAD1)
+                            containerColor = Color(0xFF87ceeb)
                         )
                     ) {
                         Icon(
